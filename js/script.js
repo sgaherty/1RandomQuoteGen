@@ -40,10 +40,20 @@ let quotes = [
 
 ];
 
-
 /***
  * `getRandomQuote` function
+
+ I used this help for random #... and it's like treehouse practice https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 ***/
+
+function getRandomQuote () {
+	let randomNum = Math.floor(Math.random() * Math.floor(quotes.length));
+	console.log(randomNum);
+	console.log(quotes[randomNum]);
+
+}
+
+	getRandomQuote();
 
 
 
