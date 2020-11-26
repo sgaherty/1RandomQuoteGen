@@ -13,7 +13,8 @@ project 1 - A Random Quote Generator
 let quotes = [
 	 {
 	 	quote: "some cats scratch, some cats don't",
-	 	source: "a random kid"
+	 	source: "a random kid",
+	 	tags: "wisdom"
 	 },
 	  {
 	 	quote: "if you build it, they will come",
@@ -29,11 +30,13 @@ let quotes = [
 	  {
 	 	quote: "Life moves by pretty fast.  If you don't stop and look around once in a while, you could miss it.",
 	 	source: "Ferris Bueller",
-	 	year: 1986
+	 	year: 1986,
+	 	tags: "movie quotes"
 	 },
 	  {
 	 	quote: "The mountains are calling and I must go.",
-	 	source: "John Muir"
+	 	source: "John Muir",
+	 	tags: "wisdom"
 	 }
 
 ];
@@ -43,24 +46,21 @@ let quotes = [
 
  I used this help for random #... and it's like treehouse practice https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 ***/
-
+//generates a random # between 0 up to the # of objects in the array
 function getRandomQuote () {
 	let randomNum = Math.floor(Math.random() * Math.floor(quotes.length));
 	console.log(randomNum);
 	//console.log(quotes[randomNum]);
 	return quotes[randomNum];
-
 }
 
-//test call function.  getRandomQuote();
-
-
+//test call function, but it's called again below in printQuote.  
+//getRandomQuote();
 
 /***
  * `printQuote` function
- 1-call the getRandomQuote function
- 2-use the returned quote object to build a string of HTML and quote properties
- 3-use that string to display a random quote in the browser.
+ create html output of quote w/ conditional checks to see if citation & year exist.
+ if they exist, it concatenates the html to include the info.
 ***/
 
 function printQuote () {
@@ -72,17 +72,31 @@ function printQuote () {
 	if (randomQuote.year != undefined) {
 		html += `<span class="year"> ${randomQuote.year} </span>`;	
 	} 
+	if (randomQuote.tags != undefined) {
+		html += `<span class="tags">tags: ${randomQuote.tags}</span>`;
+	}
 		html += `</p>`
-
-
 	console.log(html);
 	document.getElementById('quote-box').innerHTML = html; 
 }
 
 printQuote()
+
+/*
+create a timer to refresh quotes auto after 3 seconds if button not clicked
+*/
+//not perfect, but not sure what the load-quote stuff actually does...
+
+if (addEventListener("click", printQuote, false)) {
+	document.getElementById('load-quote')
+} else {
+	setInterval(printQuote, 3000);
+}
+
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
 
-document.getElementById('load-quote').addEventListener("click", printQuote, false);
+//hiding this b/c of timer above
+//document.getElementById('load-quote').addEventListener("click", printQuote, false);

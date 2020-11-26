@@ -114,6 +114,18 @@ h1 {
   content: ", ";
   font-style: normal;
 }
+/*
+added .tags class to have extra credit and gray font ;)
+ */
+.tags:before {
+  content: ", ";
+  font-style: normal;
+}
+
+.tags {
+  font-style: italic;
+  color: #808080;
+}
 
 @media (min-width: 768px) {
   body {
