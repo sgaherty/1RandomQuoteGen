@@ -13,7 +13,7 @@ project 1 - A Random Quote Generator
 let quotes = [
 	 {
 	 	quote: "some cats scratch, some cats don't",
-	 	source: "unknown"
+	 	source: "a random kid"
 	 },
 	  {
 	 	quote: "if you build it, they will come",
@@ -25,12 +25,10 @@ let quotes = [
 	 	quote: "...reached down between my legs, eased the seat back",
 	 	source: "Panama, Van Halen",
 	 	citation: "Van Halen 1984",
-	 	year: 1984
 	 },
 	  {
 	 	quote: "Life moves by pretty fast.  If you don't stop and look around once in a while, you could miss it.",
 	 	source: "Ferris Bueller",
-	 	citation: "Ferris Bueller's Day Off",
 	 	year: 1986
 	 },
 	  {
@@ -49,23 +47,42 @@ let quotes = [
 function getRandomQuote () {
 	let randomNum = Math.floor(Math.random() * Math.floor(quotes.length));
 	console.log(randomNum);
-	console.log(quotes[randomNum]);
+	//console.log(quotes[randomNum]);
+	return quotes[randomNum];
 
 }
 
-	getRandomQuote();
+//test call function.  getRandomQuote();
 
 
 
 /***
  * `printQuote` function
+ 1-call the getRandomQuote function
+ 2-use the returned quote object to build a string of HTML and quote properties
+ 3-use that string to display a random quote in the browser.
 ***/
 
+function printQuote () {
+	let randomQuote = getRandomQuote();
+	let html = `<p class="quote">${randomQuote.quote}</p><p class="source">${randomQuote.source}`;
+	if (randomQuote.citation != undefined) {
+		html += `<span class="citation"> ${randomQuote.citation} </span>`;
+	}
+	if (randomQuote.year != undefined) {
+		html += `<span class="year"> ${randomQuote.year} </span>`;	
+	} 
+		html += `</p>`
 
 
+	console.log(html);
+	document.getElementById('quote-box').innerHTML = html; 
+}
+
+printQuote()
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
 
-//document.getElementById('load-quote').addEventListener("click", printQuote, false);
+document.getElementById('load-quote').addEventListener("click", printQuote, false);
