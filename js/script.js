@@ -3,13 +3,6 @@ Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 ******************************************/
 
-// For assistance: 
-  // Check the "Project Resources" section of the project instructions
-  // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
-
-/*** 
- * `quotes` array 
-***/
 let quotes = [
 	 {
 	 	quote: "some cats scratch, some cats don't",
@@ -41,27 +34,13 @@ let quotes = [
 
 ];
 
-/***
- * `getRandomQuote` function
+ //I used this help for random #: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 
- I used this help for random #... and it's like treehouse practice https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
-***/
-//generates a random # between 0 up to the # of objects in the array
 function getRandomQuote () {
 	let randomNum = Math.floor(Math.random() * Math.floor(quotes.length));
 	console.log(randomNum);
-	//console.log(quotes[randomNum]);
 	return quotes[randomNum];
 }
-
-//test call function, but it's called again below in printQuote.  
-//getRandomQuote();
-
-/***
- * `printQuote` function
- create html output of quote w/ conditional checks to see if citation & year exist.
- if they exist, it concatenates the html to include the info.
-***/
 
 function printQuote () {
 	let randomQuote = getRandomQuote();
@@ -82,13 +61,8 @@ function printQuote () {
 
 printQuote()
 
-/*
-create a timer to refresh quotes auto after 3 seconds if button not clicked
-*/
-//not perfect, but not sure what the load-quote stuff actually does...
-
 if (addEventListener("click", printQuote, false)) {
-	document.getElementById('load-quote')
+	document.getElementById('load-quote');
 } else {
 	setInterval(printQuote, 3000);
 }
@@ -98,5 +72,6 @@ if (addEventListener("click", printQuote, false)) {
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
 
-//hiding this b/c of timer above
-//document.getElementById('load-quote').addEventListener("click", printQuote, false);
+/* hiding this b/c of timer above:
+document.getElementById('load-quote').addEventListener("click", printQuote, false);
+*/

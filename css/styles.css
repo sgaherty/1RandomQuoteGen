@@ -144,8 +144,9 @@ added .tags class to have extra credit and gray font ;)
     border-bottom: 4px solid rgba(0, 0, 0, 0.3);
   }
 
+/*changed font-size from 1.5rem to 1 b/c of extra text w/ 3sec auto change quote*/
   .load-quote {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 
   .container {
