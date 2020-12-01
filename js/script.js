@@ -3,6 +3,7 @@ Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 ******************************************/
 
+
 let quotes = [
 	 {
 	 	quote: "some cats scratch, some cats don't",
@@ -34,10 +35,20 @@ let quotes = [
 
 ];
 
- //I used this help for random #: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+function randomNumber (max) {
+	let randomNumber = Math.floor(Math.random() * Math.floor(max));
+	return randomNumber;
+}
 
+function changeBackground () {
+	let rgbValue = randomNumber(255);
+	let newBackground = `rgb(58, ${rgbValue}, 98)`;
+	document.body.style.backgroundColor = newBackground;
+}
+
+ //I used this help for random #: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 function getRandomQuote () {
-	let randomNum = Math.floor(Math.random() * Math.floor(quotes.length));
+	let randomNum = randomNumber(quotes.length);
 	console.log(randomNum);
 	return quotes[randomNum];
 }
@@ -57,21 +68,15 @@ function printQuote () {
 		html += `</p>`
 	console.log(html);
 	document.getElementById('quote-box').innerHTML = html; 
+	changeBackground ()
 }
 
 printQuote()
 
-if (addEventListener("click", printQuote, false)) {
-	document.getElementById('load-quote');
-} else {
-	setInterval(printQuote, 3000);
-}
-
+setInterval(printQuote, 3000);
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
 
-/* hiding this b/c of timer above:
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
-*/
