@@ -35,11 +35,13 @@ let quotes = [
 
 ];
 
+//random number function to re-use for background change and quote change
 function randomNumber (max) {
 	let randomNumber = Math.floor(Math.random() * Math.floor(max));
 	return randomNumber;
 }
 
+//background change via only changing "g" value in rgb
 function changeBackground () {
 	let rgbValue = randomNumber(255);
 	let newBackground = `rgb(58, ${rgbValue}, 98)`;
